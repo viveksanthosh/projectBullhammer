@@ -12,12 +12,7 @@ angular
   .module('practiceApp', [
     'ngAnimate',
     'ngAria',
-    'ngCookies',
-    'ngMessages',
-    'ngResource',
     'ngRoute',
-    'ngSanitize',
-    'ngTouch',
     'firebase'
   ])
   .config(function ($routeProvider) {

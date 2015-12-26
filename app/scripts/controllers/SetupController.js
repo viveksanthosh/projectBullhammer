@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('practiceApp')
-  .controller('SetupCtrl', function ($scope,$timeout,fireBaseCall) {
+  .controller('SetupCtrl', function ($scope, $timeout, fireBaseCall) {
 
     $scope.$watch('stockNum', function (newValue, oldValue) {
       if (oldValue != newValue) {
@@ -28,28 +28,28 @@ angular.module('practiceApp')
       $scope.teamNum = 0;
     };
 
-    $scope.setData=function(){
-      $scope.$parent.playerData=fireBaseCall.newConnection('player-'+$scope.sessionID);
+    $scope.setData = function () {
+      $scope.$parent.playerData = fireBaseCall.newConnection('player-' + $scope.sessionID);
 
-      var stocks={};
+      var stocks = {};
 
-      $scope.stockArray.forEach(function(stock){
-        stocks[stock.name]=stock.quantity;
+      $scope.stockArray.forEach(function (stock) {
+        stocks[stock.name] = stock.quantity;
       })
 
 
-      $scope.teamArray.forEach(function(team){
+      $scope.teamArray.forEach(function (team) {
         $scope.$parent.playerData.$add({
           name: team.name,
-          cash:  $scope.cashBal,
+          cash: $scope.cashBal,
           stock: stocks,
-          debits :[],
-          credits :[]
+          debits: [],
+          credits: []
         });
       });
 
 
-      $scope.$parent.playerData.$loaded(function() {
+      $scope.$parent.playerData.$loaded(function () {
 
       });
 

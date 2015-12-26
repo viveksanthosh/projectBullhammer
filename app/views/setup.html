@@ -7,7 +7,7 @@
       <p>Session ID</p>
     </div>
     <div class="col-sm-5">
-      <input type="text" ng-model="sessionID" />
+      <input type="text" ng-model="sessionID"/>
     </div>
   </div>
 
@@ -16,7 +16,7 @@
       <p>Cash Balance</p>
     </div>
     <div class="col-sm-5">
-      <input type="text" ng-model="cashBal" />
+      <input type="text" ng-model="cashBal"/>
     </div>
   </div>
 
@@ -25,7 +25,7 @@
       <p>Circuit Breaker</p>
     </div>
     <div class="col-sm-5">
-      <input type="text" ng-model="circuit" />
+      <input type="text" ng-model="circuit"/>
     </div>
   </div>
 
@@ -34,7 +34,7 @@
       <p>Number Of Companies</p>
     </div>
     <div class="col-sm-5">
-      <input type="text" ng-model="stockNum" />
+      <input type="text" ng-model="stockNum"/>
     </div>
   </div>
 
@@ -43,15 +43,35 @@
       <p>Name</p>
     </div>
     <div class="col-sm-4">
-      <input type="text" ng-model="stockArray[$index].name" />
+      <input type="text" ng-model="stockArray[$index].name"/>
     </div>
     <div class="col-sm-2">
       <p>Quantity</p>
     </div>
     <div class="col-sm-4">
-      <input type="text" ng-model="stockArray[$index].quantity" />
+      <input type="text" ng-model="stockArray[$index].quantity"/>
     </div>
   </div>
 
+  <div class="row">
+    <div class="col-sm-7">
+      <p>Number Of Teams</p>
+    </div>
+    <div class="col-sm-5">
+      <input type="text" ng-model="teamNum"/>
+    </div>
+  </div>
+
+  <div class="row" ng-repeat="team in teamArray">
+    <div class="col-sm-7">
+      <p>{{$index+1}}. Team Name</p>
+    </div>
+    <div class="col-sm-5">
+      <input type="text" ng-model="teamArray[$index].name"/>
+    </div>
+  </div>
+
+  <br/>
+  <button type="button" ng-click="setData()" class="btn btn-primary">Submit</button>
 
 </div>

@@ -26,8 +26,8 @@ angular
         controller: 'SetupCtrl'
       })
       .when('/trade', {
-        templateUrl: 'views/broker.html',
-        controller: 'BrokerCtrl'
+        templateUrl: 'views/trade.html',
+        controller: 'TradeCtrl'
       })
       .when('/dashboard', {
         templateUrl: 'views/dashboard.html',

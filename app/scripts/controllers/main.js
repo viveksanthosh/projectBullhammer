@@ -2,5 +2,8 @@
 
 angular.module('practiceApp')
   .controller('MainCtrl', function ($scope) {
-   $scope.c=function(){alert(0);};
+
+    $scope.init = function () {
+      $scope.playerData=[];
+    };
   });

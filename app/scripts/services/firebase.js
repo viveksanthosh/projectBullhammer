@@ -13,3 +13,38 @@ angular.module('practiceApp').factory("fireBaseCall", ["$firebaseArray",
     }
   }
 ]);
+
+/*
+Data Structure:
+ |
+ |-- password {password: value}
+ |-- player-'session id'
+ |    |- multiple
+ |     	|-{name: value}
+ |    	|-{cash: value}
+ |     	|- {stock : object_of_stocks}
+ |     	|-debitHistory[array]
+ |    	|-creditHistory[array]
+ |
+ |-- stock-'session id'
+ |     |- multiple
+ |     	|-{stockName: value}
+ |    	|-{circuit breaker: value}
+ |     	|-{cb%: value}
+ |     	|-{tradePrice 1: value}
+ |    	|-{tradeQuantity 1: value}
+ |     	|-{tradePrice 2: value}
+ |    	|-{tradeQuantity 2: value}
+ |     	|-{tradePrice 3: value}
+ |    	|-{tradeQuantity 3: value}
+ |     	|-{LTP: value}
+ |
+ |
+ |-- transcations-'session id'
+ | 		|- array[]
+ |
+ |
+ |
+
+
+ */

@@ -42,14 +42,20 @@
     <div class="col-sm-2">
       <p>Name</p>
     </div>
-    <div class="col-sm-4">
-      <input type="text" ng-model="stockArray[$index].name"/>
+    <div class="col-sm-3">
+      <input type="text" size="8" ng-model="stockArray[$index].name"/>
     </div>
     <div class="col-sm-2">
       <p>Quantity</p>
     </div>
-    <div class="col-sm-4">
-      <input type="text" ng-model="stockArray[$index].quantity"/>
+    <div class="col-sm-2">
+      <input type="text" size="2" ng-model="stockArray[$index].quantity"/>
+    </div>
+    <div class="col-sm-2">
+      <p>Price</p>
+    </div>
+    <div class="col-sm-1">
+      <input type="text" size="2" ng-model="stockArray[$index].price"/>
     </div>
   </div>
 

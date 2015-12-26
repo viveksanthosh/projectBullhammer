@@ -5,5 +5,8 @@ angular.module('practiceApp')
 
     $scope.init = function () {
       $scope.playerData=[];
+      $scope.stockData=[];
+      $scope.transactionData=[];
+      $scope.password='';
     };
   });

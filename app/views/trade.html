@@ -1,16 +1,48 @@
-<h2 align="center" ng-init="init()"> </h2>
+<h2 align="center" ng-init="init()">Trading Window</h2>
 
 <div class="jumbotron">
 
   <div class="row">
     <div class="col-sm-7">
-      <p>Session ID</p>
+      <p>Stock</p>
     </div>
     <div class="col-sm-5">
-      <input type="text" ng-model="sessionID"/>
+      <select ng-model="selectedStock">
+        <option value="">Please Select</option>
+        <option ng-repeat="stock in $parent.stockData" value="{{$index}}">{{stock.name}}</option>
+      </select>
     </div>
   </div>
 
+  <div class="row">
+    <div class="col-sm-7">
+      <p>Team</p>
+    </div>
+    <div class="col-sm-5">
+      <select ng-model="selectedTeam">
+        <option value="">Please Select</option>
+        <option ng-repeat="team in $parent.playerData" value="{{$index}}">{{stock.name}}</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-sm-7">
+      <p>Quantity</p>
+    </div>
+    <div class="col-sm-5">
+      <input type="text" ng-model="selectedQuantity"/>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-sm-7">
+      <p>Price</p>
+    </div>
+    <div class="col-sm-5">
+      <input type="text"  ng-model="selectedPrice"/>
+    </div>
+  </div>
 
   <br/>
   <button type="button" ng-click="setData()" class="btn btn-primary">Submit</button>

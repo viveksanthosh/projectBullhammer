@@ -21,13 +21,17 @@ angular
         templateUrl: 'views/home.html',
         controller: 'HomeCtrl'
       })
-      .when('/dashboard', {
-        templateUrl: 'views/dashboard.html',
-        controller: 'DashboardCtrl'
-      })
       .when('/setup', {
         templateUrl: 'views/setup.html',
         controller: 'SetupCtrl'
+      })
+      .when('/trade', {
+        templateUrl: 'views/broker.html',
+        controller: 'BrokerCtrl'
+      })
+      .when('/dashboard', {
+        templateUrl: 'views/dashboard.html',
+        controller: 'DashboardCtrl'
       })
       .otherwise({
         redirectTo: '/'

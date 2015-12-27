@@ -1,6 +1,6 @@
 <h2 align="center" ng-init="init()">Trading Window</h2>
 
-<div class="jumbotron">
+<div class="jumbotron" >
 
   <div class="row">
     <div class="col-sm-7">
@@ -16,10 +16,10 @@
 
   <div class="row">
     <div class="col-sm-7">
-      <p>Team</p>
+      <p>Buying Team</p>
     </div>
     <div class="col-sm-5">
-      <select ng-model="selectedTeam">
+      <select ng-model="buyerTeam">
         <option value="">Please Select</option>
         <option ng-repeat="team in $parent.playerData" value="{{$index}}">{{team.name}}</option>
       </select>
@@ -28,13 +28,12 @@
 
   <div class="row">
     <div class="col-sm-7">
-      <p>Transaction Type</p>
+      <p>Selling Team</p>
     </div>
     <div class="col-sm-5">
-      <select ng-model="transactionType">
+      <select ng-model="sellerTeam">
         <option value="">Please Select</option>
-        <option value="Buy">Buy</option>
-        <option value="Sell">Sell</option>
+        <option ng-if="$index != buyerTeam" ng-repeat="team in $parent.playerData" value="{{$index}}">{{team.name}}</option>
       </select>
     </div>
   </div>

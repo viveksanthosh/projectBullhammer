@@ -29,6 +29,14 @@ angular
         templateUrl: 'views/trade.html',
         controller: 'TradeCtrl'
       })
+      .when('/accounts', {
+        templateUrl: 'views/transaction.html',
+        controller: 'TransCtrl'
+      })
+      .when('/team', {
+        templateUrl: 'views/team.html',
+        controller: 'TeamCtrl'
+      })
       .when('/dashboard', {
         templateUrl: 'views/dashboard.html',
         controller: 'DashboardCtrl'

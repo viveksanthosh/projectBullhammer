@@ -1,6 +1,8 @@
 /**
  * Created by vivek_000 on 19-12-2015.
  */
+'use strict';
+
 angular.module('practiceApp').factory("fireBaseCall", ["$firebaseArray",
   function ($firebaseArray) {
     return {

@@ -21,7 +21,20 @@
     <div class="col-sm-5">
       <select ng-model="selectedTeam">
         <option value="">Please Select</option>
-        <option ng-repeat="team in $parent.playerData" value="{{$index}}">{{stock.name}}</option>
+        <option ng-repeat="team in $parent.playerData" value="{{$index}}">{{team.name}}</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-sm-7">
+      <p>Transaction Type</p>
+    </div>
+    <div class="col-sm-5">
+      <select ng-model="transactionType">
+        <option value="">Please Select</option>
+        <option value="Buy">Buy</option>
+        <option value="Sell">Sell</option>
       </select>
     </div>
   </div>
@@ -45,6 +58,6 @@
   </div>
 
   <br/>
-  <button type="button" ng-click="setData()" class="btn btn-primary">Submit</button>
+  <button type="button" ng-click="transact()" class="btn btn-primary">Submit</button>
 
 </div>

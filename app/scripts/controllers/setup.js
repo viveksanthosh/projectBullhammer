@@ -4,19 +4,21 @@ angular.module('practiceApp')
   .controller('SetupCtrl', function ($scope, $timeout, fireBaseCall) {
 
     $scope.$watch('stockNum', function (newValue, oldValue) {
-      if (oldValue != newValue) {
+      if (oldValue !== newValue) {
         $scope.stockArray = [];
-        for (var i = 0; i < newValue; i++)
+        for (var i = 0; i < newValue; i++) {
           $scope.stockArray.push({name: '-', quantity: 0, price: 0});
+        }
       }
 
     });
 
     $scope.$watch('teamNum', function (newValue, oldValue) {
-      if (oldValue != newValue) {
+      if (oldValue !== newValue) {
         $scope.teamArray = [];
-        for (var i = 0; i < newValue; i++)
+        for (var i = 0; i < newValue; i++) {
           $scope.teamArray.push({name: '-'});
+        }
       }
     });
 
@@ -33,20 +35,20 @@ angular.module('practiceApp')
       $scope.$parent.stockData = fireBaseCall.newConnection('stock-' + $scope.sessionID);
       $scope.$parent.transactionData = fireBaseCall.newConnection('trans-' + $scope.sessionID);
       var password = fireBaseCall.newConnection('password');
-      var stocks = {};
+      var stocks = [];
 
       $scope.stockArray.forEach(function (stock) {
-        stocks[stock.name] = stock.quantity;
+        stocks.push({name: stock.name, quantity: stock.quantity});
         $scope.$parent.stockData.$add({
           name: stock.name,
-          cash: $scope.cashBal,
           circuitPrice: stock.price,
           circuitPercentage: $scope.circuit,
           tradeCount: 0,
-          tradePrice: [0, 0, 0,],
-          tradeQuantity: [0, 0, 0,]
+          totalTrade: 0,
+          totalQuantity: 0,
+          ltp : stock.price
         });
-      })
+      });
 
 
       $scope.teamArray.forEach(function (team) {
@@ -54,9 +56,13 @@ angular.module('practiceApp')
           name: team.name,
           cash: $scope.cashBal,
           stock: stocks,
-          debits: [],
-          credits: []
+          debits: ["session - " + $scope.sessionID],
+          credits: ["session - " + $scope.sessionID]
         });
+      });
+
+      $scope.$parent.transactionData.$add({
+        trades: ["session - " + $scope.sessionID]
       });
 
 

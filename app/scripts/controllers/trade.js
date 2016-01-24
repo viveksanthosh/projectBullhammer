@@ -13,6 +13,10 @@ angular.module('practiceApp')
     };
 
     $scope.transact = function () {
+      if ($scope.$parent.user === '') {
+        alert('Please Login');
+        return;
+      }
       var circuit = $scope.$parent.stockData[$scope.selectedStock].circuitPrice * $scope.$parent.stockData[$scope.selectedStock].circuitPercentage / 100
       var upCircuit = parseInt($scope.$parent.stockData[$scope.selectedStock].circuitPrice) + circuit;
       var downCircuit = $scope.$parent.stockData[$scope.selectedStock].circuitPrice - circuit;

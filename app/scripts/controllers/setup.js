@@ -31,6 +31,12 @@ angular.module('practiceApp')
     };
 
     $scope.setData = function () {
+
+      if ($scope.$parent.user === '') {
+        alert('Please Login');
+        return;
+      }
+
       $scope.$parent.playerData = fireBaseCall.newConnection('player-' + $scope.sessionID);
       $scope.$parent.stockData = fireBaseCall.newConnection('stock-' + $scope.sessionID);
       $scope.$parent.transactionData = fireBaseCall.newConnection('trans-' + $scope.sessionID);

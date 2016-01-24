@@ -8,7 +8,7 @@ angular.module('practiceApp').factory("fireBaseCall", ["$firebaseArray",
     return {
       newConnection: function (sessionId) {
         // create a reference to the database location where we will store our data
-        var ref = new Firebase();
+        var ref = new Firebase("https://incandescent-inferno-3106.firebaseio.com/"+sessionId);
         // this uses AngularFire to create the synchronized array
         return $firebaseArray(ref);
       }

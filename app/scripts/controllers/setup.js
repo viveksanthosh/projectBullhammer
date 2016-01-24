@@ -40,6 +40,11 @@ angular.module('practiceApp')
       $scope.$parent.playerData = fireBaseCall.newConnection('player-' + $scope.sessionID);
       $scope.$parent.stockData = fireBaseCall.newConnection('stock-' + $scope.sessionID);
       $scope.$parent.transactionData = fireBaseCall.newConnection('trans-' + $scope.sessionID);
+
+      $scope.$parent.transactionData.$loaded(function () {
+        alert('Connection Successful');
+      });
+
       var stocks = [];
 
       $scope.stockArray.forEach(function (stock) {
@@ -51,7 +56,7 @@ angular.module('practiceApp')
           tradeCount: 0,
           totalTrade: 0,
           totalQuantity: 0,
-          ltp : stock.price
+          ltp: stock.price
         });
       });
 

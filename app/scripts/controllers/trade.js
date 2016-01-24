@@ -67,11 +67,11 @@ angular.module('practiceApp')
           }
 
         } else {
-          alert("Lower Circuit Hit");
+          alert("Lower Circuit Hit, Please trade between "+downCircuit+" and "+upCircuit);
         }
       }
       else {
-        alert("Upper Circuit Hit");
+        alert("Upper Circuit Hit, Please trade between "+downCircuit+" and "+upCircuit);
       }
 
     }

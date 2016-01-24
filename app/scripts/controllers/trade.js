@@ -32,9 +32,9 @@ angular.module('practiceApp')
               $scope.$parent.playerData[$scope.buyerTeam].cash -= tradePrice;
               $scope.$parent.playerData[$scope.sellerTeam].cash = parseInt($scope.$parent.playerData[$scope.sellerTeam].cash) + tradePrice;
 
-              var message = "Sold " + $scope.selectedQuantity + " " + $scope.$parent.stockData[$scope.selectedStock].name + " to " + $scope.$parent.playerData[$scope.buyerTeam].name + " for " + tradePrice + " at " + Date();
+              var message = "Sold " + $scope.selectedQuantity + " " + $scope.$parent.stockData[$scope.selectedStock].name + " to " + $scope.$parent.playerData[$scope.buyerTeam].name + " via " + $scope.$parent.user + " for " + tradePrice + " at " + Date();
               $scope.$parent.playerData[$scope.sellerTeam].credits.unshift(message);
-              message = "Purchased " + $scope.selectedQuantity + " " + $scope.$parent.stockData[$scope.selectedStock].name + " from " + $scope.$parent.playerData[$scope.sellerTeam].name + " for " + tradePrice + " at " + Date();
+              message = "Purchased " + $scope.selectedQuantity + " " + $scope.$parent.stockData[$scope.selectedStock].name + " from " + $scope.$parent.playerData[$scope.sellerTeam].name + " via " + $scope.$parent.user + " for " + tradePrice + " at " + Date();
               $scope.$parent.playerData[$scope.buyerTeam].debits.unshift(message);
               $scope.$parent.playerData.$save($scope.$parent.playerData[$scope.sellerTeam]);
               $scope.$parent.playerData.$save($scope.$parent.playerData[$scope.buyerTeam]);
@@ -52,11 +52,10 @@ angular.module('practiceApp')
               }
               $scope.$parent.stockData.$save($scope.$parent.stockData[$scope.selectedStock]);
 
-              message = $scope.$parent.playerData[$scope.sellerTeam].name + " Sold " + $scope.selectedQuantity + " " + $scope.$parent.stockData[$scope.selectedStock].name +" to "+$scope.$parent.playerData[$scope.buyerTeam].name+ " for " + tradePrice + " at " + Date();
+              message = $scope.$parent.playerData[$scope.sellerTeam].name + " Sold " + $scope.selectedQuantity + " " + $scope.$parent.stockData[$scope.selectedStock].name + " to " + $scope.$parent.playerData[$scope.buyerTeam].name + " via " + $scope.$parent.user + " for " + tradePrice + " at " + Date();
               $scope.$parent.transactionData[0].trades.unshift(message);
               $scope.$parent.transactionData.$save($scope.$parent.transactionData[0]);
-
-
+              alert('Trade Done Successfully');
 
             } else {
               alert("Not quantity to sell");
@@ -67,11 +66,11 @@ angular.module('practiceApp')
           }
 
         } else {
-          alert("Lower Circuit Hit, Please trade between "+downCircuit+" and "+upCircuit);
+          alert("Lower Circuit Hit, Please trade between " + downCircuit + " and " + upCircuit);
         }
       }
       else {
-        alert("Upper Circuit Hit, Please trade between "+downCircuit+" and "+upCircuit);
+        alert("Upper Circuit Hit, Please trade between " + downCircuit + " and " + upCircuit);
       }
 
     }

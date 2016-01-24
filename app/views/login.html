@@ -1,0 +1,40 @@
+<h2 align="center" ng-init="init()">Trader Login</h2>
+
+<div class="jumbotron" >
+
+  <div class="row">
+    <div class="col-sm-7">
+      <p>Trader Name</p>
+    </div>
+    <div class="col-sm-5">
+      <input type="text" ng-model="trader_name">
+      </input>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-sm-7">
+      <p>Admin Login </p>
+    </div>
+    <div class="col-sm-5">
+      <input type="text" ng-model="admin_name">
+      </input>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-sm-7">
+      <p>Admin Password </p>
+    </div>
+    <div class="col-sm-5">
+      <input type="password" ng-model="admin_password">
+      </input>
+    </div>
+  </div>
+
+
+  <br/>
+  <button type="button" ng-click="verify()" class="btn btn-primary">Submit</button>
+
+</div>
+

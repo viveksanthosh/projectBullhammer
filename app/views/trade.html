@@ -1,6 +1,6 @@
 <h2 align="center" ng-init="init()">Trading Window</h2>
 
-<div class="jumbotron" >
+<div class="jumbotron" ng-if="$parent.user !== '' ">
 
   <div class="row">
     <div class="col-sm-7">
@@ -59,4 +59,9 @@
   <br/>
   <button type="button" ng-click="transact()" class="btn btn-primary">Submit</button>
 
+</div>
+
+
+<div class="jumbotron" ng-if="$parent.user === '' ">
+  <p>Sorry, you must login to view this page :( </p>
 </div>

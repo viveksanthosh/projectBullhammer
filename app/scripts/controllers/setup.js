@@ -34,7 +34,6 @@ angular.module('practiceApp')
       $scope.$parent.playerData = fireBaseCall.newConnection('player-' + $scope.sessionID);
       $scope.$parent.stockData = fireBaseCall.newConnection('stock-' + $scope.sessionID);
       $scope.$parent.transactionData = fireBaseCall.newConnection('trans-' + $scope.sessionID);
-      var password = fireBaseCall.newConnection('password');
       var stocks = [];
 
       $scope.stockArray.forEach(function (stock) {
@@ -63,11 +62,6 @@ angular.module('practiceApp')
 
       $scope.$parent.transactionData.$add({
         trades: ["session - " + $scope.sessionID]
-      });
-
-
-      password.$loaded(function () {
-        $scope.$parent.password = password[0].password;
       });
 
     };

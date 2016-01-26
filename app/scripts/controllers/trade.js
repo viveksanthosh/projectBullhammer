@@ -22,8 +22,8 @@ angular.module('practiceApp')
       var downCircuit = $scope.$parent.stockData[$scope.selectedStock].circuitPrice - circuit;
       var tradePrice = $scope.selectedPrice * $scope.selectedQuantity;
 
-      if (upCircuit > $scope.selectedPrice) {
-        if (downCircuit < $scope.selectedPrice) {
+      if (upCircuit >= $scope.selectedPrice || $scope.$parent.stockData[$scope.selectedStock].circuitPercentage == 100) {
+        if (downCircuit <= $scope.selectedPrice) {
           if ($scope.$parent.playerData[$scope.buyerTeam].cash >= tradePrice) {
             if ($scope.$parent.playerData[$scope.sellerTeam].stock[$scope.selectedStock].quantity >= $scope.selectedQuantity) {
 
@@ -74,11 +74,11 @@ angular.module('practiceApp')
           }
 
         } else {
-          window.alert("Lower Circuit Hit, Please trade between " + downCircuit + " and " + upCircuit);
+          window.alert("Lower Circuit Hit, Please trade between " + downCircuit.toFixed(2) + " and " + upCircuit.toFixed(2));
         }
       }
       else {
-        window.alert("Upper Circuit Hit, Please trade between " + downCircuit + " and " + upCircuit);
+        window.alert("Upper Circuit Hit, Please trade between " + downCircuit.toFixed(2) + " and " + upCircuit.toFixed(2));
       }
 
     };

@@ -46,6 +46,7 @@ angular.module('practiceApp')
       for (count = 0; count < $scope.$parent.stockData.length; count++) {
         $scope.$parent.stockData[count].circuitPrice = $scope.$parent.stockData[count].ltp;
         $scope.$parent.stockData[count].circuitPercentage = $scope.circuit;
+        $scope.$parent.stockData.$save($scope.$parent.stockData[count]);
       }
       window.alert('New Phase In Session');
     };

@@ -1,10 +1,11 @@
 'use strict';
 
 angular.module('practiceApp')
-  .controller('OtherCtrl', function ($scope, fireBaseCall,$route) {
+  .controller('OtherCtrl', function ($scope, fireBaseCall, $route) {
 
     $scope.init = function () {
       $scope.session = 0;
+      $scope.circuit = 0;
     };
 
     $scope.setSession = function () {
@@ -29,5 +30,24 @@ angular.module('practiceApp')
 
     };
 
+    $scope.newPhase = function () {
+
+      if ($scope.$parent.user === '') {
+        window.alert('Please Login');
+        return;
+      }
+
+      if ($scope.circuit > 100 || $scope.circuit < 0) {
+        window.alert('Invalid Circuit Breaker %');
+        return;
+      }
+
+      var count = 0;
+      for (count = 0; count < $scope.$parent.stockData.length; count++) {
+        $scope.$parent.stockData[count].circuitPrice = $scope.$parent.stockData[count].ltp;
+        $scope.$parent.stockData[count].circuitPercentage = $scope.circuit;
+      }
+      window.alert('New Phase In Session');
+    };
 
   });

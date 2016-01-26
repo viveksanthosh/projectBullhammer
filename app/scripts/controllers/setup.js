@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('practiceApp')
-  .controller('SetupCtrl', function ($scope, $timeout, fireBaseCall) {
+  .controller('SetupCtrl', function ($scope, $timeout, fireBaseCall,$route) {
 
     $scope.$watch('stockNum', function (newValue, oldValue) {
       if (oldValue !== newValue) {
@@ -33,7 +33,7 @@ angular.module('practiceApp')
     $scope.setData = function () {
 
       if ($scope.$parent.user === '') {
-        alert('Please Login');
+        window.alert('Please Login');
         return;
       }
 
@@ -42,7 +42,8 @@ angular.module('practiceApp')
       $scope.$parent.transactionData = fireBaseCall.newConnection('trans-' + $scope.sessionID);
 
       $scope.$parent.transactionData.$loaded(function () {
-        alert('Connection Successful');
+        window.alert('Connection Successful');
+        $route.reload();
       });
 
       var stocks = [];

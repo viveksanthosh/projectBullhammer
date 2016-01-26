@@ -14,10 +14,10 @@ angular.module('practiceApp')
 
     $scope.transact = function () {
       if ($scope.$parent.user === '') {
-        alert('Please Login');
+        window.alert('Please Login');
         return;
       }
-      var circuit = $scope.$parent.stockData[$scope.selectedStock].circuitPrice * $scope.$parent.stockData[$scope.selectedStock].circuitPercentage / 100
+      var circuit = $scope.$parent.stockData[$scope.selectedStock].circuitPrice * $scope.$parent.stockData[$scope.selectedStock].circuitPercentage / 100;
       var upCircuit = parseInt($scope.$parent.stockData[$scope.selectedStock].circuitPrice) + circuit;
       var downCircuit = $scope.$parent.stockData[$scope.selectedStock].circuitPrice - circuit;
       var tradePrice = $scope.selectedPrice * $scope.selectedQuantity;
@@ -41,7 +41,7 @@ angular.module('practiceApp')
 
               $scope.$parent.stockData[$scope.selectedStock].totalTrade += tradePrice;
               $scope.$parent.stockData[$scope.selectedStock].totalQuantity += parseInt($scope.selectedQuantity);
-              if ($scope.$parent.stockData[$scope.selectedStock].tradeCount == 2) {
+              if ($scope.$parent.stockData[$scope.selectedStock].tradeCount === 2) {
                 $scope.$parent.stockData[$scope.selectedStock].ltp = ($scope.$parent.stockData[$scope.selectedStock].totalTrade / $scope.$parent.stockData[$scope.selectedStock].totalQuantity).toFixed(2);
                 $scope.$parent.stockData[$scope.selectedStock].tradeCount = 0;
                 $scope.$parent.stockData[$scope.selectedStock].totalTrade = 0;
@@ -55,24 +55,24 @@ angular.module('practiceApp')
               message = $scope.$parent.playerData[$scope.sellerTeam].name + " Sold " + $scope.selectedQuantity + " " + $scope.$parent.stockData[$scope.selectedStock].name + " to " + $scope.$parent.playerData[$scope.buyerTeam].name + " via " + $scope.$parent.user + " for " + tradePrice + " at " + Date();
               $scope.$parent.transactionData[0].trades.unshift(message);
               $scope.$parent.transactionData.$save($scope.$parent.transactionData[0]);
-              alert('Trade Done Successfully');
+              window.alert('Trade Done Successfully');
 
             } else {
-              alert("Not quantity to sell");
+              window.alert("Not quantity to sell");
             }
           }
           else {
-            alert("Not enough cash to buy");
+            window.alert("Not enough cash to buy");
           }
 
         } else {
-          alert("Lower Circuit Hit, Please trade between " + downCircuit + " and " + upCircuit);
+          window.alert("Lower Circuit Hit, Please trade between " + downCircuit + " and " + upCircuit);
         }
       }
       else {
-        alert("Upper Circuit Hit, Please trade between " + downCircuit + " and " + upCircuit);
+        window.alert("Upper Circuit Hit, Please trade between " + downCircuit + " and " + upCircuit);
       }
 
-    }
+    };
   }
 );

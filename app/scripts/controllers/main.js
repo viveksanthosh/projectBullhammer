@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('practiceApp')
-  .controller('MainCtrl', function ($scope,fireBaseCall,$timeout) {
+  .controller('MainCtrl', function ($scope,fireBaseCall) {
 
     $scope.init = function () {
       $scope.playerData=[];

@@ -12,7 +12,7 @@ angular.module('practiceApp').factory("fireBaseCall", ["$firebaseArray",
         // this uses AngularFire to create the synchronized array
         return $firebaseArray(ref);
       }
-    }
+    };
   }
 ]);
 

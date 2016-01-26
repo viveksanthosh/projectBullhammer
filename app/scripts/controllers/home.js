@@ -1,6 +1,6 @@
 'use strict';
 
 angular.module('practiceApp')
-  .controller('HomeCtrl', function ($scope) {
+  .controller('HomeCtrl', function () {
 
   });

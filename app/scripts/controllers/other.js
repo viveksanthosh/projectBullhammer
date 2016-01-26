@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('practiceApp')
-  .controller('OtherCtrl', function ($scope, fireBaseCall) {
+  .controller('OtherCtrl', function ($scope, fireBaseCall,$route) {
 
     $scope.init = function () {
       $scope.session = 0;
@@ -10,7 +10,7 @@ angular.module('practiceApp')
     $scope.setSession = function () {
 
       if ($scope.$parent.user === '') {
-        alert('Please Login');
+        window.alert('Please Login');
         return;
       }
       $scope.$parent.playerData = fireBaseCall.newConnection('player-' + $scope.session);
@@ -18,10 +18,13 @@ angular.module('practiceApp')
       $scope.$parent.transactionData = fireBaseCall.newConnection('trans-' + $scope.session);
 
       $scope.$parent.transactionData.$loaded(function () {
-        if($scope.$parent.transactionData[0].trades.length!==undefined)
-          alert('Connection Successful');
-        else
-          alert('Session Does Not Exist');
+        if ($scope.$parent.transactionData[0].trades.length !== undefined) {
+          window.alert('Connection Successful');
+          $route.reload();
+        }
+        else {
+          window.alert('Session Does Not Exist');
+        }
       });
 
     };

@@ -4,7 +4,7 @@
 'use strict';
 
 angular.module('practiceApp')
-  .controller('LoginCtrl', function ($scope) {
+  .controller('LoginCtrl', function ($scope, $route) {
     $scope.init = function () {
       $scope.trader_name = '';
       $scope.admin_name = '';
@@ -13,15 +13,16 @@ angular.module('practiceApp')
 
     $scope.verify = function () {
       if ($scope.trader_name === '') {
-        alert('User Name Cannot Be Empty');
+        window.alert('User Name Cannot Be Empty');
         return;
       }
       if ($scope.admin_name === 'Admin' && $scope.$parent.password === $scope.admin_password) {
         $scope.$parent.user = $scope.trader_name;
-        alert('Successful LoginIn');
+        window.alert('Successful LoginIn');
+        $route.reload();
       }
       else {
-        alert('Incorrect Admin Name Or Password');
+        window.alert('Incorrect Admin Name Or Password');
       }
     };
   }

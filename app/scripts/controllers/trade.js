@@ -42,10 +42,18 @@ angular.module('practiceApp')
               $scope.$parent.stockData[$scope.selectedStock].totalTrade += tradePrice;
               $scope.$parent.stockData[$scope.selectedStock].totalQuantity += parseInt($scope.selectedQuantity);
               if ($scope.$parent.stockData[$scope.selectedStock].tradeCount === 2) {
+                if ($scope.$parent.stockData[$scope.selectedStock].ltp > $scope.$parent.stockData[$scope.selectedStock].totalTrade / $scope.$parent.stockData[$scope.selectedStock].totalQuantity) {
+                  $scope.$parent.stockData[$scope.selectedStock].arrow = 0;
+                  $scope.$parent.stockData[$scope.selectedStock].highlight = 'bg-danger';
+                } else {
+                  $scope.$parent.stockData[$scope.selectedStock].arrow = 1;
+                  $scope.$parent.stockData[$scope.selectedStock].highlight = 'bg-success';
+                }
                 $scope.$parent.stockData[$scope.selectedStock].ltp = ($scope.$parent.stockData[$scope.selectedStock].totalTrade / $scope.$parent.stockData[$scope.selectedStock].totalQuantity).toFixed(2);
                 $scope.$parent.stockData[$scope.selectedStock].tradeCount = 0;
                 $scope.$parent.stockData[$scope.selectedStock].totalTrade = 0;
                 $scope.$parent.stockData[$scope.selectedStock].totalQuantity = 0;
+
               }
               else {
                 $scope.$parent.stockData[$scope.selectedStock].tradeCount += 1;

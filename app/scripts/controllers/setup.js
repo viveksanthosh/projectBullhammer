@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('practiceApp')
-  .controller('SetupCtrl', function ($scope, $timeout, fireBaseCall,$route) {
+  .controller('SetupCtrl', function ($scope, $timeout, fireBaseCall, $route) {
 
     $scope.$watch('stockNum', function (newValue, oldValue) {
       if (oldValue !== newValue) {
@@ -57,7 +57,9 @@ angular.module('practiceApp')
           tradeCount: 0,
           totalTrade: 0,
           totalQuantity: 0,
-          ltp: stock.price
+          ltp: stock.price,
+          arrow: 2,
+          highlight: ''
         });
       });
 

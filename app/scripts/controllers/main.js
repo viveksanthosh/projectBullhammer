@@ -7,7 +7,7 @@ angular.module('practiceApp')
       $scope.playerData=[];
       $scope.stockData=[];
       $scope.transactionData=[];
-      $scope.user='';
+      $scope.user='j';
       $scope.password='';
       var password = fireBaseCall.newConnection('password');
       password.$loaded(function () {

@@ -6,21 +6,17 @@
     <thead class="bg-primary">
     <tr>
       <th>#</th>
-      <th>Firstname</th>
+      <th>Stock</th>
+      <th>Price</th>
     </tr>
     </thead>
-    <tbody>
-    <tr style="background-color: #E8E8E8 ">
-      <td>1</td>
-      <td>Anna</td>
-    </tr>
-    <tr>
-      <td>2</td>
-      <td>Debbie</td>
-    </tr>
-    <tr>
-      <td>3</td>
-      <td>John</td>
+    <tbody ng-repeat="stock in $parent.stockData">
+    <tr style="background-color: #E8E8E8 " ng-init="arrow=2" ng-controller="ArrowCtrl">
+      <td>{{$index +1}}</td>
+      <td>{{stock.name}}</td>
+      <td>{{stock.ltp}}<span ng-if="arrow===1" style="float: right;color: lime"
+                             class="glyphicon glyphicon-arrow-up"></span> <span
+        ng-if="arrow===0" style="float: right;color: red" class="glyphicon glyphicon-arrow-down"></span></td>
     </tr>
     </tbody>
   </table>

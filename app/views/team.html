@@ -1,0 +1,74 @@
+<div class="container" ng-init="init()">
+  <h2>Team Details</h2>
+
+  <div class="row">
+    <div class="col-sm-7">
+      <p>Select Team</p>
+    </div>
+    <div class="col-sm-5">
+      <select ng-model="team">
+        <option value="">Please Select</option>
+        <option ng-repeat="team in $parent.playerData" value="{{$index}}">{{team.name}}</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="jumbotron" ng-if=" team!='' ">
+
+    <h4 align="left">Cash Balance : {{$parent.playerData[team].cash}}</h4>
+    <h4 align="left">Portfolio Details</h4>
+    <table class="table table-bordered">
+      <thead class="bg-primary">
+      <tr>
+        <th>Stock</th>
+        <th>Quantity</th>
+        <th>LTP</th>
+        <th>Total</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr ng-repeat="stock in $parent.playerData[team].stock" style="background-color: #E8E8E8 ">
+        <td>{{stock.name}}</td>
+        <td>{{stock.quantity}}</td>
+        <td>{{$parent.stockData[$index].ltp}}</td>
+        <td>{{$parent.stockData[$index].ltp*stock.quantity}}</td>
+      </tr>
+      </tbody>
+    </table>
+    <br/>
+
+    <p align="left" ng-init="total()">Portfolio Balance : {{shareTotal}}</p>
+    <h4> Net Worth : {{$parent.playerData[team].cash + shareTotal}}</h4>
+    <br/>
+
+    <div class="row">
+      <div class="col-sm-7">
+        <p align="left">Transaction Type : </p>
+      </div>
+      <div class="col-sm-5">
+        <select ng-init="trans_type=''" ng-model="trans_type">
+          <option value="">Please Select</option>
+          <option value="credits">Credits</option>
+          <option value="debits">Debits</option>
+        </select>
+      </div>
+    </div>
+
+    <table class="table table-bordered" ng-if="trans_type!=''">
+      <thead class="bg-primary">
+      <tr>
+        <th>#</th>
+        <th>Details</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr ng-repeat="trades in $parent.playerData[team][trans_type]" style="background-color: #E8E8E8 ">
+        <td>{{$index +1}}</td>
+        <td>{{trades}}</td>
+      </tr>
+      </tbody>
+    </table>
+
+
+  </div>
+</div>

@@ -480,4 +480,8 @@ module.exports = function (grunt) {
     'test',
     'build'
   ]);
+  
+  grunt.registerTask('js', [
+    'newer:jshint'
+  ]);
 };

@@ -1,0 +1,89 @@
+<h2 align="center" ng-init="init()">New Session </h2>
+
+<div class="jumbotron" ng-if="$parent.user === '' ">
+  <p>Sorry, you must login to transact on this page :( </p>
+</div>
+
+<div class="jumbotron">
+
+  <div class="row">
+    <div class="col-sm-7">
+      <p>Session ID</p>
+    </div>
+    <div class="col-sm-5">
+      <input type="text" ng-model="sessionID"/>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-sm-7">
+      <p>Cash Balance</p>
+    </div>
+    <div class="col-sm-5">
+      <input type="text" ng-model="cashBal"/>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-sm-7">
+      <p>Circuit Breaker</p>
+    </div>
+    <div class="col-sm-5">
+      <input type="text" ng-model="circuit"/>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-sm-7">
+      <p>Number Of Companies</p>
+    </div>
+    <div class="col-sm-5">
+      <input type="text" ng-model="stockNum"/>
+    </div>
+  </div>
+
+  <div class="row" ng-repeat="stock in stockArray">
+    <div class="col-sm-2">
+      <p>Name</p>
+    </div>
+    <div class="col-sm-3">
+      <input type="text" size="8" ng-model="stockArray[$index].name"/>
+    </div>
+    <div class="col-sm-2">
+      <p>Quantity</p>
+    </div>
+    <div class="col-sm-2">
+      <input type="text" size="2" ng-model="stockArray[$index].quantity"/>
+    </div>
+    <div class="col-sm-2">
+      <p>Price</p>
+    </div>
+    <div class="col-sm-1">
+      <input type="text" size="2" ng-model="stockArray[$index].price"/>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-sm-7">
+      <p>Number Of Teams</p>
+    </div>
+    <div class="col-sm-5">
+      <input type="text" ng-model="teamNum"/>
+    </div>
+  </div>
+
+  <div class="row" ng-repeat="team in teamArray">
+    <div class="col-sm-7">
+      <p>{{$index+1}}. Team Name</p>
+    </div>
+    <div class="col-sm-5">
+      <input type="text" ng-model="teamArray[$index].name"/>
+    </div>
+  </div>
+
+  <br/>
+  <button type="button" ng-click="setData()" class="btn btn-primary">Submit</button>
+
+</div>
+
+

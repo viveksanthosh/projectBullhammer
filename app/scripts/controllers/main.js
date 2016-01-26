@@ -1,17 +1,17 @@
 'use strict';
 
-/**
- * @ngdoc function
- * @name practiceApp.controller:MainCtrl
- * @description
- * # MainCtrl
- * Controller of the practiceApp
- */
 angular.module('practiceApp')
-  .controller('MainCtrl', function () {
-    this.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
+  .controller('MainCtrl', function ($scope,fireBaseCall) {
+
+    $scope.init = function () {
+      $scope.playerData=[];
+      $scope.stockData=[];
+      $scope.transactionData=[];
+      $scope.user='';
+      $scope.password='';
+      var password = fireBaseCall.newConnection('password');
+      password.$loaded(function () {
+        $scope.password = password[0].password;
+      });
+    };
   });

@@ -1,0 +1,23 @@
+<div class="container">
+  <h2>Market</h2>
+
+  <p></p>
+  <table class="table table-bordered table-hover">
+    <thead class="bg-primary">
+    <tr>
+      <th>#</th>
+      <th>Stock</th>
+      <th>Price</th>
+    </tr>
+    </thead>
+    <tbody ng-repeat="stock in $parent.stockData">
+    <tr ng-class="stock.highlight">
+      <td>{{$index +1}}</td>
+      <td>{{stock.name}}</td>
+      <td>{{stock.ltp}}<span ng-if="stock.arrow===1" style="float: right;color: green"
+                             class="glyphicon glyphicon-arrow-up"></span> <span
+        ng-if="stock.arrow===0" style="float: right;color: red" class="glyphicon glyphicon-arrow-down"></span></td>
+    </tr>
+    </tbody>
+  </table>
+</div>

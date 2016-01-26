@@ -1,0 +1,66 @@
+<h2 align="center" ng-init="init()">Trading Window</h2>
+
+<div class="jumbotron" ng-if="$parent.user === '' ">
+  <p>Sorry, you must login to transact on this page :( </p>
+</div>
+
+<div class="jumbotron">
+
+  <div class="row">
+    <div class="col-sm-7">
+      <p>Stock</p>
+    </div>
+    <div class="col-sm-5">
+      <select ng-model="selectedStock">
+        <option value="">Please Select</option>
+        <option ng-repeat="stock in $parent.stockData" value="{{$index}}">{{stock.name}}</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-sm-7">
+      <p>Buying Team</p>
+    </div>
+    <div class="col-sm-5">
+      <select ng-model="buyerTeam">
+        <option value="">Please Select</option>
+        <option ng-repeat="team in $parent.playerData" value="{{$index}}">{{team.name}}</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-sm-7">
+      <p>Selling Team</p>
+    </div>
+    <div class="col-sm-5">
+      <select ng-model="sellerTeam">
+        <option value="">Please Select</option>
+        <option ng-if="$index != buyerTeam" ng-repeat="team in $parent.playerData" value="{{$index}}">{{team.name}}</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-sm-7">
+      <p>Quantity</p>
+    </div>
+    <div class="col-sm-5">
+      <input type="text" ng-model="selectedQuantity"/>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-sm-7">
+      <p>Price</p>
+    </div>
+    <div class="col-sm-5">
+      <input type="text"  ng-model="selectedPrice"/>
+    </div>
+  </div>
+
+  <br/>
+  <button type="button" ng-click="transact()" class="btn btn-primary">Submit</button>
+
+</div>

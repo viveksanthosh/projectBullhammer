@@ -43,6 +43,7 @@ angular.module('practiceApp')
 
       $scope.$parent.transactionData.$loaded(function () {
         window.alert('Connection Successful');
+        document.getElementById('session').innerHTML = $scope.sessionID;
         $route.reload();
       });
 
@@ -55,8 +56,8 @@ angular.module('practiceApp')
           circuitPrice: stock.price,
           circuitPercentage: $scope.circuit,
           tradeCount: 0,
-          totalTrade: 0,
-          totalQuantity: 0,
+          totalTrade: [],
+          totalQuantity: [],
           ltp: stock.price,
           arrow: 2,
           highlight: ''

@@ -21,6 +21,7 @@ angular.module('practiceApp')
       $scope.$parent.transactionData.$loaded(function () {
         if ($scope.$parent.transactionData[0].trades.length !== undefined) {
           window.alert('Connection Successful');
+          document.getElementById('session').innerHTML = $scope.sessionID;
           $route.reload();
         }
         else {

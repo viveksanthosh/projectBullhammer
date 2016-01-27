@@ -19,6 +19,7 @@ angular.module('practiceApp')
       if ($scope.admin_name === 'Admin' && $scope.$parent.password === $scope.admin_password) {
         $scope.$parent.user = $scope.trader_name;
         window.alert('Successful LoginIn');
+        document.getElementById('login').innerHTML = '<span class="glyphicon glyphicon-log-in"></span> ' + $scope.$parent.user;
         $route.reload();
       }
       else {

@@ -21,11 +21,12 @@ angular.module('practiceApp')
       var upCircuit = parseInt($scope.$parent.stockData[$scope.selectedStock].circuitPrice) + circuit;
       var downCircuit = $scope.$parent.stockData[$scope.selectedStock].circuitPrice - circuit;
       var tradePrice = $scope.selectedPrice * $scope.selectedQuantity;
+      //$scope.selectedQuantity = parseInt($scope.selectedQuantity);
 
       if (upCircuit >= $scope.selectedPrice || $scope.$parent.stockData[$scope.selectedStock].circuitPercentage == 100) {
         if (downCircuit <= $scope.selectedPrice) {
           if ($scope.$parent.playerData[$scope.buyerTeam].cash >= tradePrice) {
-            if ($scope.$parent.playerData[$scope.sellerTeam].stock[$scope.selectedStock].quantity >= $scope.selectedQuantity) {
+            if (parseInt($scope.$parent.playerData[$scope.sellerTeam].stock[$scope.selectedStock].quantity) >= parseInt($scope.selectedQuantity)) {
 
               $scope.$parent.playerData[$scope.buyerTeam].stock[$scope.selectedStock].quantity = parseInt($scope.$parent.playerData[$scope.buyerTeam].stock[$scope.selectedStock].quantity) + parseInt($scope.selectedQuantity);
               $scope.$parent.playerData[$scope.sellerTeam].stock[$scope.selectedStock].quantity = parseInt($scope.$parent.playerData[$scope.sellerTeam].stock[$scope.selectedStock].quantity) - parseInt($scope.selectedQuantity);

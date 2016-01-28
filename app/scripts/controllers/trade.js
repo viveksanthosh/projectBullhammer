@@ -40,24 +40,24 @@ angular.module('practiceApp')
               $scope.$parent.playerData.$save($scope.$parent.playerData[$scope.sellerTeam]);
               $scope.$parent.playerData.$save($scope.$parent.playerData[$scope.buyerTeam]);
 
-              $scope.$parent.stockData[$scope.selectedStock].totalTrade += tradePrice;
-              $scope.$parent.stockData[$scope.selectedStock].totalQuantity += parseInt($scope.selectedQuantity);
-              if ($scope.$parent.stockData[$scope.selectedStock].tradeCount === 2) {
-                if ($scope.$parent.stockData[$scope.selectedStock].ltp > $scope.$parent.stockData[$scope.selectedStock].totalTrade / $scope.$parent.stockData[$scope.selectedStock].totalQuantity) {
+              if ($scope.$parent.stockData[$scope.selectedStock].totalTrade.length > 2) {
+                $scope.$parent.stockData[$scope.selectedStock].totalTrade.unshift(tradePrice);
+                $scope.$parent.stockData[$scope.selectedStock].totalQuantity.unshift(parseInt($scope.selectedQuantity));
+                var ltp = (($scope.$parent.stockData[$scope.selectedStock].totalTrade[0] + $scope.$parent.stockData[$scope.selectedStock].totalTrade[1] + $scope.$parent.stockData[$scope.selectedStock].totalTrade[2]) / ($scope.$parent.stockData[$scope.selectedStock].totalQuantity[0] + $scope.$parent.stockData[$scope.selectedStock].totalQuantity[1] + $scope.$parent.stockData[$scope.selectedStock].totalQuantity[2])).toFixed(2);
+                if ($scope.$parent.stockData[$scope.selectedStock].ltp > ltp) {
                   $scope.$parent.stockData[$scope.selectedStock].arrow = 0;
                   $scope.$parent.stockData[$scope.selectedStock].highlight = 'bg-danger';
                 } else {
                   $scope.$parent.stockData[$scope.selectedStock].arrow = 1;
                   $scope.$parent.stockData[$scope.selectedStock].highlight = 'bg-success';
                 }
-                $scope.$parent.stockData[$scope.selectedStock].ltp = ($scope.$parent.stockData[$scope.selectedStock].totalTrade / $scope.$parent.stockData[$scope.selectedStock].totalQuantity).toFixed(2);
-                $scope.$parent.stockData[$scope.selectedStock].tradeCount = 0;
-                $scope.$parent.stockData[$scope.selectedStock].totalTrade = 0;
-                $scope.$parent.stockData[$scope.selectedStock].totalQuantity = 0;
+                $scope.$parent.stockData[$scope.selectedStock].ltp = ltp;
 
               }
               else {
-                $scope.$parent.stockData[$scope.selectedStock].tradeCount += 1;
+                $scope.$parent.stockData[$scope.selectedStock].totalTrade.unshift(tradePrice);
+                $scope.$parent.stockData[$scope.selectedStock].totalQuantity.unshift(parseInt($scope.selectedQuantity));
+                $scope.$parent.stockData[$scope.selectedStock].ltp = $scope.selectedPrice;
               }
               $scope.$parent.stockData.$save($scope.$parent.stockData[$scope.selectedStock]);
 
@@ -67,7 +67,7 @@ angular.module('practiceApp')
               window.alert('Trade Done Successfully');
 
             } else {
-              window.alert("Not quantity to sell");
+              window.alert("Not enough quantity to sell");
             }
           }
           else {

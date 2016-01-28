@@ -3,17 +3,13 @@
 angular.module('practiceApp')
   .controller('MainCtrl', function ($scope, fireBaseCall) {
 
-    /*$scope.$watch('user', function (newValue, oldValue) {
+    $scope.$watch('team', function (newValue, oldValue) {
       if (newValue !== '' && newValue !== oldValue) {
-        document.getElementById('login').innerHTML ='<span class="glyphicon glyphicon-log-in"></span> '+ newValue;
+        $scope.total();
       }
     }, true);
 
-    $scope.$watch('user', function (newValue, oldValue) {
-      if (newValue !== '' && newValue !== oldValue) {
-        document.getElementById('login').innerHTML ='<span class="glyphicon glyphicon-log-in"></span> '+ newValue;
-      }
-    }, true);*/
+
 
     $scope.init = function () {
       $scope.playerData = [];

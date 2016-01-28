@@ -28,6 +28,10 @@ angular.module('practiceApp')
           console.log(localStorage.getItem('session'));
           $scope.user = old_session.user;
           document.getElementById('login').innerHTML = '<span class="glyphicon glyphicon-log-in"></span> ' + $scope.user;
+          var session = localStorage.getItem('session');
+          if (session !== null) {
+            $scope.connect(session);
+          }
         }
         else {
           localStorage.removeItem('login');
@@ -35,4 +39,13 @@ angular.module('practiceApp')
       }
 
     };
+
+
+    $scope.connect = function (session) {
+      $scope.playerData = fireBaseCall.newConnection('player-' + session);
+      $scope.stockData = fireBaseCall.newConnection('stock-' + session);
+      $scope.transactionData = fireBaseCall.newConnection('trans-' + session);
+      document.getElementById('session').innerHTML = '<span class="glyphicon glyphicon-pencil"></span> ' + session;
+    };
+
   });

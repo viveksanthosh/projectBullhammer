@@ -43,6 +43,7 @@ angular.module('practiceApp')
 
       $scope.$parent.transactionData.$loaded(function () {
         window.alert('Connection Successful');
+        localStorage.setItem('session' , $scope.sessionID);
         document.getElementById('session').innerHTML = '<span class="glyphicon glyphicon-pencil"></span> ' + $scope.sessionID;
         $route.reload();
       });

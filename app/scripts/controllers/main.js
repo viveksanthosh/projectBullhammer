@@ -9,8 +9,6 @@ angular.module('practiceApp')
       }
     }, true);
 
-
-
     $scope.init = function () {
       $scope.playerData = [];
       $scope.stockData = [];
@@ -21,5 +19,20 @@ angular.module('practiceApp')
       password.$loaded(function () {
         $scope.password = password[0].password;
       });
+      var old_session = localStorage.getItem('login');
+
+      if (old_session !== null) {
+        old_session = JSON.parse(old_session);
+
+        if (old_session.valid >= (new Date().getTime())) {
+          console.log(localStorage.getItem('session'));
+          $scope.user = old_session.user;
+          document.getElementById('login').innerHTML = '<span class="glyphicon glyphicon-log-in"></span> ' + $scope.user;
+        }
+        else {
+          localStorage.removeItem('login');
+        }
+      }
+
     };
   });

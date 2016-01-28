@@ -61,7 +61,7 @@ angular.module('practiceApp')
               }
               $scope.$parent.stockData.$save($scope.$parent.stockData[$scope.selectedStock]);
 
-              message = $scope.$parent.playerData[$scope.sellerTeam].name + " Sold " + $scope.selectedQuantity + " " + $scope.$parent.stockData[$scope.selectedStock].name + " to " + $scope.$parent.playerData[$scope.buyerTeam].name + " via " + $scope.$parent.user + " for " + tradePrice + " at " + Date();
+              message = $scope.$parent.playerData[$scope.sellerTeam].name + " Sold " + $scope.selectedQuantity + " " + $scope.$parent.stockData[$scope.selectedStock].name + " to " + $scope.$parent.playerData[$scope.buyerTeam].name + " via " + $scope.$parent.user + " at " + $scope.selectedPrice + " for a total value of " + tradePrice + " at " + Date();
               $scope.$parent.transactionData[0].trades.unshift(message);
               $scope.$parent.transactionData.$save($scope.$parent.transactionData[0]);
               window.alert('Trade Done Successfully');

@@ -25,7 +25,6 @@ angular.module('practiceApp')
         old_session = JSON.parse(old_session);
 
         if (old_session.valid >= (new Date().getTime())) {
-          console.log(localStorage.getItem('session'));
           $scope.user = old_session.user;
           document.getElementById('login').innerHTML = '<span class="glyphicon glyphicon-log-in"></span> ' + $scope.user;
           var session = localStorage.getItem('session');
@@ -39,7 +38,6 @@ angular.module('practiceApp')
       }
 
     };
-
 
     $scope.connect = function (session) {
       $scope.playerData = fireBaseCall.newConnection('player-' + session);

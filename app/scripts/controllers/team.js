@@ -17,9 +17,10 @@ angular.module('practiceApp')
     $scope.total = function () {
       $scope.shareTotal = 0;
       $scope.$parent.playerData[$scope.team].stock.forEach(function (stock, count) {
-        $scope.shareTotal = $scope.shareTotal + parseInt(stock.quantity * $scope.$parent.stockData[count].ltp);
+        $scope.shareTotal = $scope.shareTotal + (parseFloat(stock.quantity * $scope.$parent.stockData[count].ltp));
+
       });
-      return $scope.shareTotal;
     };
+
   }
 );

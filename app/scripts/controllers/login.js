@@ -16,6 +16,12 @@ angular.module('practiceApp')
         window.alert('User Name Cannot Be Empty');
         return;
       }
+
+      if ($scope.trader_name.length > 4) {
+        window.alert('User Name Cannot Be More Than 4 Characters');
+        return;
+      }
+
       if ($scope.admin_name === 'Admin' && $scope.$parent.password === $scope.admin_password) {
         $scope.$parent.user = $scope.trader_name;
         window.alert('Successful LoginIn');

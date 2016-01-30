@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('practiceApp')
-  .controller('MainCtrl', function ($scope, fireBaseCall) {
+  .controller('MainCtrl', function ($scope,$route, fireBaseCall) {
 
     $scope.$watch('team', function (newValue, oldValue) {
       if (newValue !== '' && newValue !== oldValue) {
@@ -19,8 +19,17 @@ angular.module('practiceApp')
       password.$loaded(function () {
         $scope.password = password[0].password;
       });
-      var old_session = localStorage.getItem('login');
+      $scope.login();
 
+      setInterval(function () {
+        $scope.login();
+      }, 60000);
+
+    };
+
+
+    $scope.login = function () {
+      var old_session = localStorage.getItem('login');
       if (old_session !== null) {
         old_session = JSON.parse(old_session);
 
@@ -34,10 +43,23 @@ angular.module('practiceApp')
         }
         else {
           localStorage.removeItem('login');
+          localStorage.removeItem('session');
         }
       }
-
     };
+
+    $scope.signout = function () {
+      localStorage.removeItem('login');
+      localStorage.removeItem('session');
+      $scope.user = '';
+      $scope.playerData = [];
+      $scope.stockData = [];
+      $scope.transactionData = [];
+      document.getElementById('login').innerHTML = '<span class="glyphicon glyphicon-log-in"></span> Login';
+      document.getElementById('session').innerHTML = '';
+      $route.reload();
+    };
+
 
     $scope.connect = function (session) {
       $scope.playerData = fireBaseCall.newConnection('player-' + session);

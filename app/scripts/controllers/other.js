@@ -14,17 +14,26 @@ angular.module('practiceApp')
         window.alert('Please Login');
         return;
       }
+
+      if ($scope.session.length > 3) {
+        window.alert('Session Id Cannot Be More Than 3 Characters');
+        return;
+      }
+
       $scope.$parent.playerData = fireBaseCall.newConnection('player-' + $scope.session);
       $scope.$parent.stockData = fireBaseCall.newConnection('stock-' + $scope.session);
       $scope.$parent.transactionData = fireBaseCall.newConnection('trans-' + $scope.session);
 
       $scope.$parent.transactionData.$loaded(function () {
-        if ($scope.$parent.transactionData[0].trades.length !== undefined) {
+        if ($scope.$parent.transactionData[0] !== undefined) {
           window.alert('Connection Successful');
+          localStorage.setItem('session' , $scope.session);
+          document.getElementById('session').innerHTML = '<span class="glyphicon glyphicon-pencil"></span> ' + $scope.session;
           $route.reload();
         }
         else {
           window.alert('Session Does Not Exist');
+          $scope.signout(false);
         }
       });
 

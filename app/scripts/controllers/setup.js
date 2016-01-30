@@ -37,12 +37,19 @@ angular.module('practiceApp')
         return;
       }
 
+      if ($scope.sessionID.length > 3) {
+        window.alert('Session Id Cannot Be More Than 3 Characters');
+        return;
+      }
+
       $scope.$parent.playerData = fireBaseCall.newConnection('player-' + $scope.sessionID);
       $scope.$parent.stockData = fireBaseCall.newConnection('stock-' + $scope.sessionID);
       $scope.$parent.transactionData = fireBaseCall.newConnection('trans-' + $scope.sessionID);
 
       $scope.$parent.transactionData.$loaded(function () {
         window.alert('Connection Successful');
+        localStorage.setItem('session', $scope.sessionID);
+        document.getElementById('session').innerHTML = '<span class="glyphicon glyphicon-pencil"></span> ' + $scope.sessionID;
         $route.reload();
       });
 
@@ -55,8 +62,8 @@ angular.module('practiceApp')
           circuitPrice: stock.price,
           circuitPercentage: $scope.circuit,
           tradeCount: 0,
-          totalTrade: 0,
-          totalQuantity: 0,
+          totalTrade: [0],
+          totalQuantity: [0],
           ltp: stock.price,
           arrow: 2,
           highlight: ''
@@ -69,13 +76,13 @@ angular.module('practiceApp')
           name: team.name,
           cash: $scope.cashBal,
           stock: stocks,
-          debits: ["session - " + $scope.sessionID],
-          credits: ["session - " + $scope.sessionID]
+          debits: ['session - ' + $scope.sessionID],
+          credits: ['session - ' + $scope.sessionID]
         });
       });
 
       $scope.$parent.transactionData.$add({
-        trades: ["session - " + $scope.sessionID]
+        trades: ['session - ' + $scope.sessionID]
       });
 
     };

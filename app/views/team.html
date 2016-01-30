@@ -31,14 +31,14 @@
         <td>{{stock.name}}</td>
         <td>{{stock.quantity}}</td>
         <td>{{$parent.stockData[$index].ltp}}</td>
-        <td>{{$parent.stockData[$index].ltp*stock.quantity}}</td>
+        <td>{{($parent.stockData[$index].ltp*stock.quantity)}}</td>
       </tr>
       </tbody>
     </table>
     <br/>
 
-    <p align="left" ng-init="total()">Portfolio Balance : {{shareTotal}}</p>
-    <h4> Net Worth : {{$parent.playerData[team].cash + shareTotal}}</h4>
+    <p align="left">Portfolio Balance : {{shareTotal}}</p>
+    <h3 style="color: green;"> Net Worth : {{networth}}</h3>
     <br/>
 
     <div class="row">

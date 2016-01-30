@@ -76,13 +76,13 @@ angular.module('practiceApp')
           name: team.name,
           cash: $scope.cashBal,
           stock: stocks,
-          debits: ["session - " + $scope.sessionID],
-          credits: ["session - " + $scope.sessionID]
+          debits: ['session - ' + $scope.sessionID],
+          credits: ['session - ' + $scope.sessionID]
         });
       });
 
       $scope.$parent.transactionData.$add({
-        trades: ["session - " + $scope.sessionID]
+        trades: ['session - ' + $scope.sessionID]
       });
 
     };

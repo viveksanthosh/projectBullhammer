@@ -29,12 +29,12 @@ angular.module('practiceApp')
 
 
     $scope.login = function () {
-      var old_session = localStorage.getItem('login');
-      if (old_session !== null) {
-        old_session = JSON.parse(old_session);
+      var oldSession = localStorage.getItem('login');
+      if (oldSession !== null) {
+        oldSession = JSON.parse(oldSession);
 
-        if (old_session.valid >= (new Date().getTime())) {
-          $scope.user = old_session.user;
+        if (oldSession.valid >= (new Date().getTime())) {
+          $scope.user = oldSession.user;
           document.getElementById('login').innerHTML = '<span class="glyphicon glyphicon-log-in"></span> ' + $scope.user;
           var session = localStorage.getItem('session');
           if (session !== null) {

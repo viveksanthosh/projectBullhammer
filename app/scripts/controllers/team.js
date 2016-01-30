@@ -18,8 +18,9 @@ angular.module('practiceApp')
       $scope.shareTotal = 0;
       $scope.$parent.playerData[$scope.team].stock.forEach(function (stock, count) {
         $scope.shareTotal = $scope.shareTotal + (parseFloat(stock.quantity * $scope.$parent.stockData[count].ltp));
-
+        console.log(typeof $scope.playerData[$scope.team].cash);
       });
+      $scope.networth= parseFloat($scope.playerData[$scope.team].cash)+ $scope.shareTotal;
     };
 
   }

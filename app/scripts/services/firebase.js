@@ -3,7 +3,7 @@
  */
 'use strict';
 
-angular.module('practiceApp').factory("fireBaseCall", ["$firebaseArray",
+angular.module('practiceApp').factory('fireBaseCall', ['$firebaseArray',
   function ($firebaseArray) {
     return {
       newConnection: function (sessionId) {

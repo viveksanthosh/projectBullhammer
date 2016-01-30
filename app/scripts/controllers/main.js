@@ -48,14 +48,16 @@ angular.module('practiceApp')
       }
     };
 
-    $scope.signout = function () {
-      localStorage.removeItem('login');
+    $scope.signout = function (complete) {
+      if(complete){
+        localStorage.removeItem('login');
+        $scope.user = '';
+        document.getElementById('login').innerHTML = '<span class="glyphicon glyphicon-log-in"></span> Login';
+      }
       localStorage.removeItem('session');
-      $scope.user = '';
       $scope.playerData = [];
       $scope.stockData = [];
       $scope.transactionData = [];
-      document.getElementById('login').innerHTML = '<span class="glyphicon glyphicon-log-in"></span> Login';
       document.getElementById('session').innerHTML = '';
       $route.reload();
     };

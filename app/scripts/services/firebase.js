@@ -24,26 +24,24 @@ Data Structure:
  |    |- multiple
  |     	|-{name: value}
  |    	|-{cash: value}
- |     	|- {stock : object_of_stocks}
- |     	|-debitHistory[array]
- |    	|-creditHistory[array]
+ |     	|-stock -- multiple -- {name : value, quantity : value}
+ |     	|-debits[array]
+ |    	|-credits[array]
  |
  |-- stock-'session id'
  |     |- multiple
- |     	|-{stockName: value}
- |    	|-{circuit breaker: value}
- |     	|-{cb%: value}
- |     	|-{tradePrice 1: value}
- |    	|-{tradeQuantity 1: value}
- |     	|-{tradePrice 2: value}
- |    	|-{tradeQuantity 2: value}
- |     	|-{tradePrice 3: value}
- |    	|-{tradeQuantity 3: value}
- |     	|-{LTP: value}
+ |      	|- {arrow : value}
+ |      	|-{highlight: value}
+ |      	|-{stockName: value}
+ |      	|-{circuit breaker: value}
+ |      	|-{cb%: value}
+ |      	|-{totalTrade : array[values]}
+ |      	|-{totalQuantity : array[values]}
+ |      	|-{LTP: value}
  |
  |
  |-- transcations-'session id'
- | 		|- array[]
+ | 		|- {trades : array[values]}
  |
  |
  |

@@ -28,7 +28,7 @@ angular.module('practiceApp')
         document.getElementById('login').innerHTML = '<span class="glyphicon glyphicon-log-in"></span> ' + $scope.$parent.user;
         localStorage.setItem('login', JSON.stringify({
           'user': $scope.$parent.user,
-          'valid': ((new Date().getTime()) + (20 * 60 * 1000))
+          'valid': ((new Date().getTime()) + (240 * 60 * 1000))
         }));
         $route.reload();
       }

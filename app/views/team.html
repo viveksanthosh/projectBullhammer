@@ -31,7 +31,7 @@
         <td>{{stock.name}}</td>
         <td>{{stock.quantity}}</td>
         <td>{{$parent.stockData[$index].ltp}}</td>
-        <td>{{($parent.stockData[$index].ltp*stock.quantity)}}</td>
+        <td>{{($parent.stockData[$index].ltp*stock.quantity).toFixed(2)}}</td>
       </tr>
       </tbody>
     </table>

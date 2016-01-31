@@ -61,7 +61,6 @@ angular.module('practiceApp')
           name: stock.name,
           circuitPrice: stock.price,
           circuitPercentage: $scope.circuit,
-          tradeCount: 0,
           totalTrade: [0],
           totalQuantity: [0],
           ltp: stock.price,
